@@ -1,4 +1,5 @@
 import pymongo
+from datetime import datetime
 
 class MongoDB:
     def __init__(self):
@@ -56,3 +57,15 @@ class MongoDB:
             return "Materiales registrados en MongoDB"
         except:
             return "No se inserto nada."
+
+    def actualizarFecha(self,id):
+        try:
+            self.myquery = {"ID": str(id)}
+            self.ahora = datetime.now()
+            self.fecha = self.ahora.strftime("%Y-%m-%d %H:%M:%S")
+            self.newValue = {"$set":{"Fecha_Devolucion":self.fecha}}
+            self.tabla.update_one(self.myquery,self.newValue)
+            return "Actualizacion exitosa"
+        except:
+            return "no se actualizo"
+        

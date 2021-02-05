@@ -29,6 +29,11 @@ newdb.createTablaMateriales()
 #Conexion a MongoDB
 newMongo = MongoDB()
 print(newMongo.mongoConexion())
+
+newMongo.createDataBase(input("Ingresa el nombre de la base de Datos: "))
+newMongo.crearTabla(input("Ingresa el nombre de la Tabla: "))
+newMongo.actualizarFecha(int(input("Ingresa el ID: ")))
+print(newMongo.actualizarFecha)
 #------------------------------
 numero = 0
 respuesta = "s"
